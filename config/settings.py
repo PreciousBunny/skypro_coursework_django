@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_crontab', #планировщик задач
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [

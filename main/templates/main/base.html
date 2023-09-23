@@ -19,7 +19,7 @@
 <!--     <div class="header-dark">-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid ">
-            <a class="navbar-brand" style="color:#00ffff" href="/">SkyForest</a>
+            <a class="navbar-brand" title="Вернуться на главную страницу" style="color:#00ffff" href="/">SkyForest</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse"   aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
             <div class="row gy-5">
                 {% block content %}  <!-- выводит content из index.html -->
                 {% endblock %}
-            </div><!-- /.row -->
+            </div>
         </div>
     </div>
 </main>
@@ -67,7 +67,7 @@
             <ul class="list-unstyled text-small ">
                 <li class="mb-1" >
                    <p><a class="link-secondary text-decoration-none" href="{% url 'main:client_list' %}">Клиенты</a></p>
-                    <p><a class="link-secondary text-decoration-none" href="mailto:my_danny@mail.ru">
+                    <p><a class="link-secondary text-decoration-none" title="Смелее)" href="mailto:my_danny@mail.ru">
                          Связаться с нами</a></p>
                 </li>
             </ul>

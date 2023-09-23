@@ -1,0 +1,29 @@
+{% load mediapath %}
+
+<div class="col-3 p-3">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-2 font-weight-normal">{{object.name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            <li>{{object.content|slice:":136"}}</li>
+                        </ul>
+                        <p><img src="{% mediapath object.image %}" width="250" height="190" alt="Картинка"></p>
+                        <p><a class="btn btn-secondary" href="{% url 'blog:post_detail' object.slug %}" role="button">Посмотреть &raquo</a></p>
+                        {% if perms.blog.can_change_post or user.is_superuser%}
+                        <p><a class="btn btn-warning" href="{% url 'blog:post_update' object.slug %}" role="button">Изменить &raquo;</a></p>
+                         {% endif %}
+                        {% if user.is_superuser %}
+                        <p><a class="btn btn-danger" href="{% url 'blog:post_delete' object.slug %}" role="button">Удалить &raquo;</a></p>
+                        {% endif %}
+                    </div>
+                    {% if perms.blog.can_change_post or user.is_superuser %}
+                    {% if  object.is_published %}
+                        <a class="btn btn-danger" href="{% url 'blog:toggle_publish' object.slug %}" role="button">Deactivate &raquo;</a>
+                    {% else %}
+                        <a class="btn btn-success" href="{% url 'blog:toggle_publish' object.slug %}" role="button">Activate &raquo;</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>

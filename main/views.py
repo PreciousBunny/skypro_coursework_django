@@ -5,6 +5,8 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+
+from blog.models import Post
 from main.models import *
 from main.services import send_email_to_clients
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,6 +21,12 @@ class IndexView(TemplateView):
         'title': 'SkyForest',
         'object_list': Sending.objects.all()
     }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        all_posts = list(Post.objects.filter(is_published=True))
+        context['random_blog_posts'] = sample(all_posts, min(3, len(all_posts)))
+        return context
 
 
 class ClientListView(LoginRequiredMixin, ListView):

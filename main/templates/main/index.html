@@ -6,9 +6,9 @@
 {% block content %}
       <div class="header-dark">
 
- <div class="row gy-5 mt-1 mx-0 ">
+ <div class="row gy-5 mt-5 mx-0 ">
         <h1> Сервис рассылки сообщений SkyForest</h1>
-     <div class="col">
+     <div class="col-12">
             <div class="p-3 mb-5  rounded">
 
                 <figure class=" p-3 mb-0" style="color:#00ffff">
@@ -21,13 +21,16 @@
             </div>
         </div>
  </div>
-
-<div class="row gy-1 mt-5" style="color:#c0c0c0">
-        <h1> Последние новости</h1>
-<!--    {% for object in random_blog_posts %}-->
-<!--        {% include 'blog/includes/inc_post_card.html' %}-->
-
 </div>
+
+<div class="row  mt-5" style="color:#c0c0c0">
+        <h1> Последние новости SkyVillage:</h1>
+    <div class="col-3">
+     </div>
+    {% for object in random_blog_posts %}
+        {% include 'blog/includes/inc_post_card.html' %}
 {% endfor %}
 </div>
+
+
 {% endblock %}
