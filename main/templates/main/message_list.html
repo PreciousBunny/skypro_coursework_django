@@ -10,7 +10,8 @@
             <div class="col-12">
                 <a href="{% url 'main:message_create' %}" class="btn btn-primary border-info m-2">Создать сообщение</a>
             </div>
-            {% for object in message_list %}
+            {% for object in object_list %}
+
                 <div class="col">
                     <div class="card  mb-4 rounded-3 shadow-sm bg-primary">
                         <div class="card-header text-light py-3">
@@ -23,6 +24,7 @@
                             </ul>
                             <p><a class="btn btn-secondary" href="{% url 'main:message_view' object.pk %}">Посмотреть
                                 &raquo;</a></p>
+
                             {% if object.user == user or user.is_superuser %}
                             <p><a class="btn btn-warning" href="{% url 'main:message_update' object.pk %}">Изменить
                                 &raquo;</a></p>
