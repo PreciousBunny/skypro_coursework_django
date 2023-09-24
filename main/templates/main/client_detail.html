@@ -10,12 +10,15 @@
                     </div>
                     <div class="card-body">
                         <h6 class="card-title pricing-card-title">{{ object.email }}</h6>
+                        <p></p>
+                        Комментарий:
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li class="card-title pricing-card-title">{{ object.message }}</li>
+                            <li class="card-title pricing-card-title">{{ object.comment }}</li>
                         </ul>
-                        Кем создан:
+                        <p></p>
+
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li class="card-title pricing-card-title">{{ object.created_by }}</li>
+                            <li class="card-title pricing-card-title">Кем создан: {{ object.author }}</li>
                         </ul>
                         {% if user.is_superuser or perms.main.can_block_client %}
                         <a href="{% url 'main:set_is_active' object.pk %}" class="btn btn-outline-warning float-end">

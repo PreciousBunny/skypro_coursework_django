@@ -37,8 +37,11 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ('name', 'content', 'image', 'is_published', 'created_by',)
+    fields = ('name', 'content', 'image', 'is_published', 'user',)
     success_url = reverse_lazy('blog:post_list')
+
+    def get_initial(self):
+        return {'user': self.request.user}
 
     def form_valid(self, form):
         if form.is_valid():
@@ -56,7 +59,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ('name', 'content', 'image', 'is_published', 'created_by',)
+    fields = ('name', 'content', 'image', 'is_published', 'user',)
 
     def form_valid(self, form):
         if form.is_valid():

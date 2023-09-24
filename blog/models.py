@@ -19,6 +19,7 @@ class Post(models.Model):
     creation_date = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     is_published = models.BooleanField(verbose_name='Признак публикации', default=True)
     view_count = models.PositiveIntegerField(verbose_name='Количество просмотров', default=0)
+    user = models.CharField(max_length=50, verbose_name='Создатель', **NULLABLE)
     created_by = models.ForeignKey('users.User', verbose_name='Автор', on_delete=models.CASCADE, related_name='post', **NULLABLE)
 
     def __str__(self):
