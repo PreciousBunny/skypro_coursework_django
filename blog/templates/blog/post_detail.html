@@ -1,8 +1,10 @@
 {% extends 'main/base.html' %}
-
+{% load cache %}
 {% load mediapath %}
 
 {% block content %}
+
+{% cache 60 post %}
     <div class="col">
         <div class="card">
             <div class="card-body">
@@ -41,4 +43,5 @@
             Создана: {{ object.user }}<br>
         </p>
     </div>
+         {% endcache %}
 {% endblock %}

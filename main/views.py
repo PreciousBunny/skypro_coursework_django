@@ -52,18 +52,18 @@ class ClientDetailView(LoginRequiredMixin, DetailView):
 
 class ClientCreateView(LoginRequiredMixin, CreateView):
     model = Client
-    fields = ('name', 'email', 'comment', 'author', 'created_by')
+    fields = ('name', 'email', 'comment', 'created_by',)
     success_url = reverse_lazy('main:client_list')
 
     def form_valid(self, form):
         """Метод добавления создателя клиента"""
-        form.instance.author = self.request.user
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
 
 class ClientUpdateView(LoginRequiredMixin, UpdateView):
     model = Client
-    fields = ('name', 'email', 'comment', 'author', 'created_by', 'is_active')
+    fields = ('name', 'email', 'comment', 'created_by', 'is_active',)
 
     def get_success_url(self):
         return reverse('main:client_detail', args=[str(self.object.pk)])
@@ -89,18 +89,18 @@ class MessageDetailView(LoginRequiredMixin, DetailView):
 
 class MessageCreateView(LoginRequiredMixin, CreateView):
     model = Message
-    fields = ('subject', 'body', 'author', 'user',)
+    fields = ('subject', 'body', 'user',)
     success_url = reverse_lazy('main:message_list')
 
     def form_valid(self, form):
         """Метод добавления создателя сообщения"""
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 
 class MessageUpdateView(LoginRequiredMixin, UpdateView):
     model = Message
-    fields = ('subject', 'body', 'author', 'user',)
+    fields = ('subject', 'body', 'user',)
 
     def get_success_url(self):
         return reverse('main:message_view', args=[str(self.object.pk)])
@@ -131,12 +131,12 @@ class SendingDetailView(LoginRequiredMixin, DetailView):
 
 class SendingCreateView(LoginRequiredMixin, CreateView):
     model = Sending
-    fields = ('message', 'frequency', 'status', 'author', 'created', 'start_date', 'end_date',)
+    fields = ('message', 'frequency', 'status', 'created', 'start_date', 'end_date',)
     success_url = reverse_lazy('main:sending_list')
 
     def form_valid(self, form):
         """Метод добавления создателя сообщения"""
-        form.instance.author = self.request.user
+        form.instance.created = self.request.user
         return super().form_valid(form)
 
     try:
@@ -196,5 +196,5 @@ def set_status_sending(request, pk):
     return redirect(reverse('main:sending_list'))
 
 
-def pageNotFound(request, exception):
-    return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+# def pageNotFound(request, exception):
+#     return HttpResponseNotFound('<h1>Страница не найдена</h1>')

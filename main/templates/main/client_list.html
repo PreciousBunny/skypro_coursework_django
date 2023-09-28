@@ -12,7 +12,7 @@
             </div>
             {% for object in object_list %}
                 {% if user.is_authenticated and object.created_by == user or user.is_superuser or perms.main.can_view_client %}
-                    <div class="col">
+                    <div class="col-3 text-center">
                         <div class="card mb-4 rounded-3 shadow-sm bg-success">
                             <div class="card-header text-light py-3">
                                 <h5 class="my-0 fw-normal">{{ object.name }}</h5>
