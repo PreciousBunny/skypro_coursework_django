@@ -34,4 +34,4 @@ if settings.DEBUG:
 
 
 
-handler404 = pageNotFound
+# handler404 = pageNotFound

@@ -11,6 +11,9 @@ from blog.services import send_post_email
 # Create your views here.
 
 class PostListView(ListView):
+    """
+    Класс для отображения только разрешенных к публикации постов.
+    """
     model = Post
     extra_context = {
         'title': 'SkyVillage',  # дополнение к статической информации
@@ -75,7 +78,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 def toggle_publish(request, slug):
     """
-    Функция переключения поста.
+    Функция переключения публикации поста.
     """
     post_detail = get_object_or_404(Post, slug=slug)
     if post_detail.is_published:
@@ -89,6 +92,9 @@ def toggle_publish(request, slug):
 
 
 class PostAllListView(LoginRequiredMixin, ListView):
+    """
+    Класс для отображения всех постов (как опубликованных, так и неопубликованных).
+    """
     model = Post
     extra_context = {
         'title': 'Все записи SkyVillage',  # дополнение к статической информации

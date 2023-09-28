@@ -15,7 +15,7 @@ class Client(models.Model):
     name = models.CharField(max_length=150, verbose_name='Имя', **NULLABLE)
     email = models.EmailField(max_length=150, verbose_name='Почта', **NULLABLE)
     comment = models.TextField(verbose_name='Комментарий', **NULLABLE)
-    author = models.CharField(max_length=50, verbose_name='Создатель', **NULLABLE)
+    # author = models.CharField(max_length=50, verbose_name='Создатель', **NULLABLE)
     created_by = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Кем создан',
                                    related_name='client', **NULLABLE)
 
@@ -54,7 +54,7 @@ class Message(models.Model):
     subject = models.CharField(max_length=255, verbose_name='Тема сообщения')
     body = models.TextField(verbose_name='Текст сообщения')
     created_at = models.DateTimeField(auto_now_add=True)
-    author = models.CharField(max_length=50, verbose_name='Создатель', **NULLABLE)
+    # author = models.CharField(max_length=50, verbose_name='Создатель', **NULLABLE)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
 
     class Meta:
@@ -104,7 +104,7 @@ class Sending(models.Model):
     end_date = models.DateField(default=date.today, verbose_name='Дата окончания')
     frequency = models.CharField(max_length=30, choices=FREQUENCY_CHOICES, verbose_name='Периодичность')
     status = models.CharField(max_length=50, default='Создана', choices=SELECT_STATUS, verbose_name='Статус')
-    author = models.CharField(max_length=50, verbose_name='Отправитель', **NULLABLE)
+    # author = models.CharField(max_length=50, verbose_name='Отправитель', **NULLABLE)
     created = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Кем создано',
                                 related_name='clients', **NULLABLE)
 
